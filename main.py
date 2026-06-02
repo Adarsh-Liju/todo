@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from database import create_db_and_tables
-from routers import user
+from routers import user, auth
 
 app = FastAPI()
 
@@ -9,3 +9,4 @@ def on_startup():
     create_db_and_tables()
 
 app.include_router(user.router)
+app.include_router(auth.router)

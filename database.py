@@ -1,4 +1,5 @@
-from sqlmodel import create_engine, SQLModel, Session
+from sqlmodel import create_engine, SQLModel, Session, select
+from models.todo import List, Todo
 
 DATABASE_URL = "sqlite:///./app.db"
 
@@ -11,3 +12,9 @@ def create_db_and_tables():
 def get_session():
     with Session(engine) as session:
         yield session
+
+def get_lists_based_on_user_id(user_id):
+    with Session(engine) as session:
+        statement = select(List).where(List.owner_id==user_id)
+        results = session.exec(statement)
+        return results
