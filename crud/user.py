@@ -1,6 +1,6 @@
 from sqlmodel import Session, select
-from models.user import User
-from schemas.user import UserCreate
+from models import User
+from schemas import UserCreate
 from passlib.hash import pbkdf2_sha256
 from auth import decode_token
 

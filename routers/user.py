@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
 from database import get_session
 from crud.user import create_user, get_users, get_user_by_email
-from schemas.user import UserCreate, UserRead
+from schemas import UserCreate, UserRead
 
 router = APIRouter(prefix="/users", tags=["users"])
 

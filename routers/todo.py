@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlmodel import Session
 from database import get_session
 from crud.user import get_user_id_by_session
-from models.todo import List
+from models import List
 from database import get_lists_based_on_user_id
 
 router = APIRouter(prefix="/lists", tags=["lists"])

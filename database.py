@@ -1,7 +1,7 @@
 from sqlmodel import create_engine, SQLModel, Session, select
-from models.todo import List, Todo
+from models import List, Todo
 
-DATABASE_URL = "sqlite:///./app.db"
+DATABASE_URL = "mysql+pymysql://adarsh:ala@localhost/todo"
 
 
 engine = create_engine(DATABASE_URL, echo=True)
