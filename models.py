@@ -3,6 +3,7 @@ from sqlmodel import Field, SQLModel
 from datetime import datetime
 from enum import Enum
 
+
 class Priority(str, Enum):
     low = "low"
     medium = "medium"

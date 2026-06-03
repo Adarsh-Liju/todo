@@ -11,12 +11,10 @@ class Priority(str, Enum):
 
 class ListView(SQLModel):
     title: str
-    description: str
-    is_completed: bool
-    priority: Priority
-    due_date: datetime
-    completed_at: datetime
-    position: int
+    description: str | None = None
+    color: str | None = None
+    icon: str | None = None
+    position: int = 0
 
 
 class UserCreate(SQLModel):

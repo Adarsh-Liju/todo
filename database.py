@@ -1,4 +1,5 @@
-from sqlmodel import create_engine, SQLModel, Session, select
+from sqlmodel import Session, SQLModel, create_engine, select
+
 from models import List, Todo
 
 DATABASE_URL = "mysql+pymysql://adarsh:ala@localhost/todo"
@@ -6,15 +7,13 @@ DATABASE_URL = "mysql+pymysql://adarsh:ala@localhost/todo"
 
 engine = create_engine(DATABASE_URL, echo=True)
 
+
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
+
+    SQLModel.metadata.create_all(engine)
+
 
 def get_session():
     with Session(engine) as session:
         yield session
-
-def get_lists_based_on_user_id(user_id):
-    with Session(engine) as session:
-        statement = select(List).where(List.owner_id==user_id)
-        results = session.exec(statement)
-        return results
