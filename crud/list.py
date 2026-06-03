@@ -4,13 +4,13 @@ from database import engine
 from models import List
 
 
-def get_lists_based_on_user_id(user_id):
+def get_lists_based_on_user_id(user_id:int):
     with Session(engine) as session:
         statement = select(List).where(List.owner_id == user_id)
         return session.exec(statement).all()
 
 
-def create_new_list(user_id, listdata: ListView):
+def create_new_list(user_id:int, listdata: ListView):
     with Session(engine) as session:
         new_list = List(owner_id=user_id, **listdata.model_dump())
         session.add(new_list)

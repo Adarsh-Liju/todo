@@ -1,12 +1,6 @@
 from sqlmodel import SQLModel
-from enum import Enum
 from datetime import datetime
-
-
-class Priority(str, Enum):
-    low = "low"
-    medium = "medium"
-    high = "high"
+from models import Priority
 
 
 class ListView(SQLModel):

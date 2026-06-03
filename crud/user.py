@@ -7,7 +7,7 @@ from auth import decode_token
 
 
 def create_user(session: Session, user_in: UserCreate) -> User:
-    hashed = pbkdf2_sha256.hash(user_in.password)  # use passlib in real code
+    hashed = pbkdf2_sha256.hash(user_in.password)
     user = User(name=user_in.name, email=user_in.email, hashed_password=hashed)
     session.add(user)
     session.commit()
