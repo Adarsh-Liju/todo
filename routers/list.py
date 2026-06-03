@@ -15,14 +15,14 @@ oauth2_scheme = OAuth2PasswordBearer(
 
 
 @router.get("/", response_model=list[ListView])
-async def get_lists(
+async def get_lists_route(
     session: Session = Depends(get_session), token: str = Depends(oauth2_scheme)
 ):
     user_id = get_user_id_by_session(session, token)
     return get_lists_based_on_user_id(user_id)
 
 @router.post("/", response_model=ListView, status_code=201)
-async def create_list(formdata: ListView, session: Session = Depends(get_session), token: str = Depends(oauth2_scheme)):
+async def create_list_route(formdata: ListView, session: Session = Depends(get_session), token: str = Depends(oauth2_scheme)):
     user_id = get_user_id_by_session(session, token)
     result = create_new_list(user_id, formdata)
     if not result:
