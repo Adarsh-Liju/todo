@@ -12,7 +12,7 @@ def get_lists_based_on_user_id(user_id:int):
 
 def create_new_list(user_id:int, listdata: ListView):
     with Session(engine) as session:
-        new_list = List(owner_id=user_id, **listdata.model_dump())
+        new_list = List(owner_id=user_id, **listdata.model_dump(exclude={'id'}))
         session.add(new_list)
         session.commit()
         session.refresh(new_list)

@@ -4,7 +4,7 @@ from models import Priority
 
 
 class ListView(SQLModel):
-    id: int
+    id: int | None = None
     title: str
     description: str | None = None
     color: str | None = None
